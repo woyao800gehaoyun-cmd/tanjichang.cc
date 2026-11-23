@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getCategoryBySlug } from '../../data/categories';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3).map((p) => {
+  const cat = getCategoryBySlug(p.data.category);
+  return {
+    title: p.data.title, description: p.data.description, href: `/blog/${p.slug}/`,
+    category: cat ? cat.name : p.data.category, tags: p.data.tags, pubDate: fmt(p.data.pubDate),
+    updatedDate: p.data.updatedDate ? fmt(p.data.updatedDate) : undefined,
+  };
+});
+---
+<BlogLayout
+  title={post.data.title} description={post.data.description} pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate} category={post.data.category} tags={post.data.tags}
+  author={post.data.author} headings={headings} relatedPosts={relatedPosts}
+>
+  <Content />
+</BlogLayout>

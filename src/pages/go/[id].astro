@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { redirects } from '../../data/redirects';
+
+export function getStaticPaths() {
+  return Object.keys(redirects).map((id) => ({ params: { id } }));
+}
+const { id } = Astro.params;
+const entry = id ? redirects[id] : undefined;
+---
+<BaseLayout title={entry ? `前往：${entry.name}` : '未找到入口'} description="探机场站外中转说明页" noindex={true}>
+  <div class="container-site py-16">
+    <div class="mx-auto max-w-xl card-surface p-8 text-center space-y-5">
+      {entry ? (
+        <>
+          <span class="inline-flex rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">安全中转页</span>
+          <h1 class="text-2xl font-extrabold text-slate-900">{entry.name}</h1>
+          <p class="text-sm text-slate-600">{entry.description}</p>
+          {entry.note && <p class="rounded-xl bg-slate-50 p-3 text-xs text-slate-500">{entry.note}</p>}
+          <div class="flex justify-center gap-3 pt-2">
+            <a href={entry.url} rel="noopener noreferrer nofollow" class="btn-primary">立即前往</a>
+            <a href="/" class="btn-secondary">返回首页</a>
+          </div>
+        </>
+      ) : (
+        <a href="/" class="btn-primary">返回首页</a>
+      )}
+    </div>
+  </div>
+</BaseLayout>

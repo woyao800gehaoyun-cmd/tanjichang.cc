@@ -1,0 +1,21 @@
+---
+export interface Props {
+  items: { title: string; description: string; count: string; href: string; badge?: string }[];
+}
+const { items } = Astro.props;
+---
+<div class="grid gap-6 md:grid-cols-3">
+  {items.map((topic) => (
+    <a href={topic.href} class="card-surface card-interactive group flex flex-col justify-between p-6">
+      <div>
+        <div class="mb-3 flex items-center justify-between text-xs">
+          <span class="rounded-full bg-indigo-50 px-2.5 py-0.5 font-bold text-indigo-700">{topic.badge || '专题'}</span>
+          <span class="text-slate-500">{topic.count}</span>
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600">{topic.title}</h3>
+        <p class="mt-2 text-sm text-slate-600">{topic.description}</p>
+      </div>
+      <div class="mt-5 text-sm font-bold text-indigo-600">进入专题 &rarr;</div>
+    </a>
+  ))}
+</div>

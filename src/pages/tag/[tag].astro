@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCategoryBySlug } from '../../data/categories';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const tags = new Set<string>();
+  posts.forEach((p) => p.data.tags.forEach((t) => tags.add(t)));
+  return Array.from(tags).map((tag) => ({ params: { tag }, props: { tagName: tag } }));
+}
+const { tagName } = Astro.props;
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.tags.includes(tagName))).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<LandingLayout eyebrow="Tag" title={`标签：#${tagName}`} description={`带有「${tagName}」标签的全部实测文章。`} breadcrumbs={[{ label: '博客', href: '/blog/' }, { label: `#${tagName}` }]}>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {posts.map((post) => {
+      const cat = getCategoryBySlug(post.data.category);
+      return <ArticleCard title={post.data.title} description={post.data.description} href={`/blog/${post.slug}/`} category={cat ? cat.name : post.data.category} tags={post.data.tags} pubDate={fmt(post.data.pubDate)} updatedDate={post.data.updatedDate ? fmt(post.data.updatedDate) : undefined} />;
+    })}
+  </div>
+</LandingLayout>

@@ -1,0 +1,34 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  primaryText?: string;
+  primaryHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+}
+const {
+  title = '想省心选一个稳的？直接看 2026 榜首「光年梯」',
+  description = '查看光年梯完整档案，或浏览 6 家机场横向对比表。',
+  primaryText = '查看光年梯档案',
+  primaryHref = '/brands/guangnianti/',
+  secondaryText = '看 6 家对比表',
+  secondaryHref = '/compare/',
+} = Astro.props;
+---
+<section class="py-10">
+  <div class="container-site">
+    <div class="rounded-3xl bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-500 px-6 py-10 text-white shadow-xl sm:px-12 sm:py-12">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl font-extrabold text-white sm:text-3xl">{title}</h2>
+          <p class="text-sm text-indigo-100 sm:text-base">{description}</p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+          <a href={primaryHref} class="rounded-xl bg-white px-5 py-3 text-sm font-extrabold text-indigo-700 shadow-md hover:bg-indigo-50">{primaryText}</a>
+          <a href={secondaryHref} class="rounded-xl border border-white/40 bg-white/10 px-5 py-3 text-sm font-bold text-white hover:bg-white/20">{secondaryText}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

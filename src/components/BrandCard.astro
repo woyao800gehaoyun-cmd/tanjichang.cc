@@ -1,0 +1,19 @@
+---
+export interface Props {
+  name: string; category: string; description: string; tags?: string[]; href: string;
+}
+const { name, category, description, tags = [], href } = Astro.props;
+---
+<a href={href} class="card-surface card-interactive group flex flex-col justify-between p-6">
+  <div>
+    <div class="mb-3 flex items-center justify-between">
+      <span class="rounded-full bg-indigo-50 px-3 py-0.5 text-xs font-bold text-indigo-700">{category}</span>
+    </div>
+    <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600">{name}</h3>
+    <p class="mt-2 text-sm text-slate-600">{description}</p>
+  </div>
+  <div class="mt-5 flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
+    <div class="flex gap-1.5">{tags.slice(0, 2).map((t) => <span class="rounded bg-slate-100 px-2 py-0.5 text-slate-600">{t}</span>)}</div>
+    <span class="font-bold text-indigo-600">查看详情 &rarr;</span>
+  </div>
+</a>

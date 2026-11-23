@@ -1,0 +1,12 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTASection from '../../components/CTASection.astro';
+import { comparisonData, homeFaqs } from '../../data/homepage';
+---
+<LandingLayout eyebrow="Comparison" title="2026 六家热门机场横向对比" description="光年梯、极连云、快狸、速界、可信云、边缘节点核心维度一表看清。" breadcrumbs={[{ label: '对比中心' }]}>
+  <ComparisonTable columns={comparisonData.columns} rows={comparisonData.rows} caption="6家机场对比" />
+  <section class="mt-12"><FAQ title="选型常见问题" items={homeFaqs} /></section>
+</LandingLayout>
+<CTASection />

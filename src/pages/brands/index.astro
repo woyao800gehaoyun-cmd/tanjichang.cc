@@ -1,0 +1,24 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import BrandCard from '../../components/BrandCard.astro';
+import { airportProviders } from '../../data/providers';
+---
+
+<LandingLayout
+  eyebrow="Brands · 6 家精选"
+  title="机场与代理品牌档案库"
+  description="按2026实测综合口碑排序：光年梯、极连云、快狸、速界、可信云、边缘节点完整档案与入口。"
+  breadcrumbs={[{ label: '品牌库' }]}
+>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {airportProviders.map((p) => (
+      <BrandCard
+        name={`#${p.rank} ${p.name}`}
+        category={p.categoryLabel}
+        description={p.summary}
+        tags={p.aliases.slice(0, 2)}
+        href={p.featured ? p.detailHref : p.goHref}
+      />
+    ))}
+  </div>
+</LandingLayout>

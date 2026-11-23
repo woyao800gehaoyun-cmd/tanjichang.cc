@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCategoryBySlug } from '../../data/categories';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<LandingLayout eyebrow="Blog" title="全部实测与科普文章" description="覆盖2026飞机场导航、代理科普、外网跨境指南与外网加速器实测。" breadcrumbs={[{ label: '博客' }]}>
+  <CategoryNav />
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {posts.map((post) => {
+      const cat = getCategoryBySlug(post.data.category);
+      return (
+        <ArticleCard
+          title={post.data.title}
+          description={post.data.description}
+          href={`/blog/${post.slug}/`}
+          category={cat ? cat.name : post.data.category}
+          tags={post.data.tags}
+          pubDate={fmt(post.data.pubDate)}
+          updatedDate={post.data.updatedDate ? fmt(post.data.updatedDate) : undefined}
+        />
+      );
+    })}
+  </div>
+</LandingLayout>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+
+export async function getStaticPaths() {
+  const brands = await getCollection('brands');
+  return brands.map((brand) => ({ params: { slug: brand.slug }, props: { brand } }));
+}
+const { brand } = Astro.props;
+const { Content } = await brand.render();
+---
+<LandingLayout eyebrow={brand.data.category} title={brand.data.name} description={brand.data.description} breadcrumbs={[{ label: '品牌库', href: '/brands/' }, { label: brand.data.name }]}>
+  <div class="grid gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-8 card-surface p-6 sm:p-10"><div class="prose-zh"><Content /></div></div>
+    <aside class="lg:col-span-4 space-y-5">
+      <div class="card-surface p-6 space-y-4">
+        <h2 class="text-base font-extrabold text-slate-900">快速入口</h2>
+        <p class="text-xs text-slate-500">最近校对：{brand.data.updatedDate.toISOString().slice(0, 10)}</p>
+        <a href={`/go/${brand.slug}/`} class="btn-primary w-full !text-sm">前往官方入口 &rarr;</a>
+        <div class="flex flex-wrap gap-1.5 pt-2">
+          {brand.data.tags.map((t) => <span class="rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-bold text-indigo-700">#{t}</span>)}
+        </div>
+      </div>
+    </aside>
+  </div>
+</LandingLayout>
+<CTASection />

@@ -1,0 +1,22 @@
+---
+export interface Props {
+  title: string; description: string; href: string; category: string; tags?: string[]; pubDate: string; updatedDate?: string;
+}
+const { title, description, href, category, tags = [], pubDate, updatedDate } = Astro.props;
+---
+<article class="card-surface card-interactive flex flex-col justify-between p-6">
+  <div>
+    <div class="mb-3 flex items-center justify-between gap-2 text-xs">
+      <span class="rounded-full bg-indigo-50 px-2.5 py-0.5 font-bold text-indigo-700">{category}</span>
+      <time class="text-slate-500" datetime={pubDate}>{pubDate}</time>
+    </div>
+    <h3 class="text-lg font-extrabold text-slate-900"><a href={href} class="hover:text-indigo-600">{title}</a></h3>
+    <p class="mt-2 text-sm text-slate-600 line-clamp-3">{description}</p>
+  </div>
+  <div class="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs text-slate-500">
+    <div class="flex flex-wrap gap-1.5">
+      {tags.slice(0, 3).map((t) => <span class="rounded bg-slate-100 px-2 py-0.5 text-slate-600">#{t}</span>)}
+    </div>
+    {updatedDate && <span>更新 {updatedDate}</span>}
+  </div>
+</article>

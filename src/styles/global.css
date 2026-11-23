@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+
+  --color-accent-cyan: #06b6d4;
+  --color-accent-coral: #f97316;
+  --color-accent-pink: #ec4899;
+
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8faff;
+  --color-surface-muted: #f1f5ff;
+  --color-border-subtle: #e2e8f0;
+  --color-border-strong: #c7d2fe;
+
+  --color-ink-primary: #0f172a;
+  --color-ink-secondary: #334155;
+  --color-ink-muted: #64748b;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface-subtle);
+    color: var(--color-ink-primary);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    line-height: 1.75;
+    background-image:
+      radial-gradient(at 8% 0%, rgba(99, 102, 241, 0.14) 0px, transparent 42%),
+      radial-gradient(at 92% 4%, rgba(6, 182, 212, 0.14) 0px, transparent 40%),
+      radial-gradient(at 50% 35%, rgba(249, 115, 22, 0.06) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--color-ink-primary);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* 关键帧交互动效 */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.03); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmerLine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+.nav-glow-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-glow-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  animation: shimmerLine 3.6s ease-in-out infinite;
+}
+
+/* 布局容器 */
+.container-site {
+  width: 100%;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-site {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* 明亮立体卡片 */
+.card-surface {
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(203, 213, 225, 0.75);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-interactive:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 16px 36px rgba(79, 70, 229, 0.14), 0 4px 12px rgba(6, 182, 212, 0.08);
+}
+
+/* 明亮渐变按钮 */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-image: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  border: 0;
+  border-radius: 0.875rem;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.38);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #312e81;
+  background-color: #ffffff;
+  border: 1.5px solid #c7d2fe;
+  border-radius: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background-color: #eef2ff;
+  border-color: #6366f1;
+}
+
+/* 中文长文排版 */
+.prose-zh {
+  color: var(--color-ink-secondary);
+  font-size: 1.03125rem;
+  line-height: 1.9;
+}
+
+.prose-zh > * + * {
+  margin-top: 1.25em;
+}
+
+.prose-zh h2 {
+  font-size: 1.5rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e7ff;
+}
+
+.prose-zh h3 {
+  font-size: 1.2rem;
+  margin-top: 1.65rem;
+  margin-bottom: 0.625rem;
+  color: #312e81;
+}
+
+.prose-zh a {
+  color: #4f46e5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-zh ul,
+.prose-zh ol {
+  padding-left: 1.5rem;
+}
+
+.prose-zh ul { list-style-type: disc; }
+.prose-zh ol { list-style-type: decimal; }
+
+.prose-zh blockquote {
+  border-left: 4px solid #6366f1;
+  background: linear-gradient(90deg, #eef2ff, #f8faff);
+  padding: 0.875rem 1.25rem;
+  border-radius: 0 0.875rem 0.875rem 0;
+  margin: 1.5rem 0;
+}
+
+.prose-zh table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.prose-zh th {
+  background-color: #eef2ff;
+  color: #1e1b4b;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #c7d2fe;
+}
+
+.prose-zh td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.faq-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item[open] {
+  border-color: #818cf8;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.08);
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}

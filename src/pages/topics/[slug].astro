@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getCategoryBySlug } from '../../data/categories';
+
+export async function getStaticPaths() {
+  const topics = await getCollection('topics');
+  return topics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+const { topic } = Astro.props;
+const { Content } = await topic.render();
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+const topicPosts = posts.slice(0, 3).map((p) => {
+  const cat = getCategoryBySlug(p.data.category);
+  return { title: p.data.title, description: p.data.description, href: `/blog/${p.slug}/`, category: cat ? cat.name : p.data.category, tags: p.data.tags, pubDate: fmt(p.data.pubDate) };
+});
+---
+<LandingLayout eyebrow="Topic" title={topic.data.title} description={topic.data.description} breadcrumbs={[{ label: '专题', href: '/topics/' }, { label: topic.data.title }]}>
+  <div class="card-surface p-6 sm:p-10"><div class="prose-zh"><Content /></div></div>
+  <RelatedPosts title="专题关联文章" posts={topicPosts} />
+</LandingLayout>
+<CTASection />

@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { categories, getCategoryBySlug } from '../../data/categories';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const slugs = new Set([...categories.map((c) => c.slug), ...posts.map((p) => p.data.category)]);
+  return Array.from(slugs).map((slug) => ({ params: { category: slug } }));
+}
+const { category } = Astro.params;
+const catInfo = getCategoryBySlug(category || '');
+const name = catInfo ? catInfo.name : category || '分类';
+const desc = catInfo?.description || `浏览「${name}」分类下的全部文章。`;
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === category)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<LandingLayout eyebrow="Category" title={name} description={desc} breadcrumbs={[{ label: '博客', href: '/blog/' }, { label: name }]}>
+  <CategoryNav activeSlug={category} />
+  {posts.length > 0 ? (
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <ArticleCard title={post.data.title} description={post.data.description} href={`/blog/${post.slug}/`} category={name} tags={post.data.tags} pubDate={fmt(post.data.pubDate)} updatedDate={post.data.updatedDate ? fmt(post.data.updatedDate) : undefined} />
+      ))}
+    </div>
+  ) : (
+    <div class="card-surface p-10 text-center text-sm text-slate-500">该分类文章持续更新中，可先查看 <a href="/blog/" class="font-bold text-indigo-600 underline">全部文章</a>。</div>
+  )}
+</LandingLayout>

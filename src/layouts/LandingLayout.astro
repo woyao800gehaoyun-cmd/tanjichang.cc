@@ -1,0 +1,22 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import type { BreadcrumbItem } from '../components/Breadcrumb.astro';
+export interface Props {
+  title: string; description: string; eyebrow?: string; breadcrumbs?: BreadcrumbItem[]; noindex?: boolean;
+}
+const { title, description, eyebrow, breadcrumbs = [], noindex = false } = Astro.props;
+---
+<BaseLayout title={title} description={description} noindex={noindex}>
+  <section class="border-b border-indigo-100 bg-white/75 py-10 sm:py-14">
+    <div class="container-site">
+      {breadcrumbs.length > 0 && <Breadcrumb items={breadcrumbs} />}
+      <div class="max-w-3xl space-y-2.5">
+        {eyebrow && <p class="text-xs font-extrabold uppercase tracking-wider text-indigo-600">{eyebrow}</p>}
+        <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">{title}</h1>
+        <p class="text-base text-slate-600 sm:text-lg">{description}</p>
+      </div>
+    </div>
+  </section>
+  <div class="container-site py-10 sm:py-14"><slot /></div>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+import ArticleCard from './ArticleCard.astro';
+export interface RelatedPostItem {
+  title: string; description: string; href: string; category: string; tags?: string[]; pubDate: string; updatedDate?: string;
+}
+export interface Props { posts: RelatedPostItem[]; title?: string; }
+const { posts, title = '相关实测文章' } = Astro.props;
+---
+{posts.length > 0 && (
+  <section class="mt-12 border-t border-indigo-100 pt-10">
+    <h2 class="mb-6 text-xl font-extrabold text-slate-900">{title}</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => <ArticleCard {...post} />)}
+    </div>
+  </section>
+)}

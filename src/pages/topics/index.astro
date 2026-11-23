@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import TopicCluster from '../../components/TopicCluster.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const topics = await getCollection('topics');
+
+const topicItems = topics.map((t) => ({
+  title: t.data.title,
+  description: t.data.description,
+  count: `更新于 ${t.data.updatedDate.toISOString().slice(0, 10)}`,
+  href: `/topics/${t.slug}/`,
+  badge: t.data.featured ? '核心专题' : '内容专题',
+}));
+---
+
+<LandingLayout
+  eyebrow="Topics"
+  title="内容专题聚合"
+  description="把2026飞机场导航、代理科普与外网跨境指南按主题归类，方便系统查阅。"
+  breadcrumbs={[{ label: '专题' }]}
+>
+  <TopicCluster items={topicItems} />
+</LandingLayout>
+
+<CTASection />

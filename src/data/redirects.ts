@@ -16,10 +16,10 @@ export const redirects: Record<string, RedirectEntry> = {
   },
   guangnianti: {
     id: 'guangnianti',
-    name: '光年梯（光年梯VPN / 光年梯机场）',
-    url: 'https://tanjichang.cc/brands/guangnianti/',
-    description: '光年梯官方入口占位：请在此替换为你的真实光年梯推广/官网地址。',
-    note: '提示：在 src/data/redirects.ts 中修改 url 字段即可一键全局生效。',
+    name: '光年梯（13元/月 · 120G流量）',
+    url: 'https://gnt001.gntvipaff.cc/#/?code=FRrxGbbY',
+    description: '即将前往光年梯官方入口，优惠码 GNT80。',
+    note: '提示：优惠码 GNT80，2026 综合榜首专线主力。',
   },
   jilianyun: {
     id: 'jilianyun',

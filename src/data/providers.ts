@@ -36,7 +36,7 @@ export const airportProviders: AirportProvider[] = [
       '老牌稳健路线代表，晚高峰 4K 流媒体与跨境办公表现都很稳。支持光年梯VPN全平台客户端与纯净光年梯IP节点，适合拿来当长期主力。',
     highlights: ['晚高峰不掉速', '原生纯净IP解锁', '全端一键导入', 'AI/跨境办公友好'],
     detailHref: '/blog/guangnianti-review-2026/',
-    goHref: '/go/guangnianti/',
+    goHref: 'https://gnt001.gntvipaff.cc/#/?code=FRrxGbbY',
     featured: true,
   },
   {

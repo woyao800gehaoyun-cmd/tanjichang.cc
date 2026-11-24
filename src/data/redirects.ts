@@ -31,8 +31,8 @@ export const redirects: Record<string, RedirectEntry> = {
   kuaili: {
     id: 'kuaili',
     name: '快狸',
-    url: 'https://tanjichang.cc/brands/',
-    description: '快狸入口占位：可在 src/data/redirects.ts 中替换为真实地址。',
+    url: 'https://aolaiyun01.kuailiaff.com/#/?code=AFR8PsiY',
+    description: '即将前往快狸官方入口，优惠码 kl888。',
   },
   sujie: {
     id: 'sujie',

@@ -75,7 +75,7 @@ export const airportProviders: AirportProvider[] = [
       '主打轻快和大流量包，对学生党和日常刷剧、看油管 1080P/4K 的用户很友好。Hysteria2 协议在弱网环境下提速明显。',
     highlights: ['大流量性价比', '弱网提速明显', '新手易上手'],
     detailHref: '/blog/kuaili-review-2026/',
-    goHref: '/go/kuaili/',
+    goHref: 'https://aolaiyun01.kuailiaff.com/#/?code=AFR8PsiY',
   },
   {
     rank: 4,

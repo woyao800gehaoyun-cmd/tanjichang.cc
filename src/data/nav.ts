@@ -39,6 +39,7 @@ export const navZones: NavZone[] = [
     items: [
       { label: '代理推荐', href: '/brands/' },
       { label: '代理科普内容', href: '/blog/proxy-ip-basics/' },
+      { label: 'FAQ 问答百科', href: '/faq/', badge: '全量' },
     ],
   },
 ];
@@ -70,5 +71,6 @@ export const footerNav = {
     { label: '全部实测文章', href: '/blog/' },
     { label: '内容专题聚合', href: '/topics/' },
     { label: '6家机场对比表', href: '/compare/' },
+    { label: 'FAQ 问答百科', href: '/faq/' },
   ],
 };

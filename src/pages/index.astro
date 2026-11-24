@@ -140,7 +140,12 @@ const homeJsonLd = [
             </div>
 
             <div class="mt-6 flex items-center gap-2.5 border-t border-slate-100 pt-4">
-              <a href={p.goHref} class="btn-primary flex-1 !py-2 !px-3 !text-xs">
+              <a
+                href={p.goHref}
+                target={p.goHref.startsWith('http') ? '_blank' : undefined}
+                rel={p.goHref.startsWith('http') ? 'noopener noreferrer nofollow' : undefined}
+                class="btn-primary flex-1 !py-2 !px-3 !text-xs"
+              >
                 查看入口
               </a>
               <a href={p.detailHref} class="btn-secondary flex-1 !py-2 !px-3 !text-xs">

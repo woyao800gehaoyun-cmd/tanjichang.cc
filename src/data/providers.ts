@@ -56,7 +56,7 @@ export const airportProviders: AirportProvider[] = [
       '节点分布广、切线快，日韩美新港都有多条备用线路。平时刷视频、查资料或者多设备同时在线都很顺手，属于买完基本不用折腾的类型。',
     highlights: ['亚太节点充足', '多设备并发稳', '流媒体解锁全'],
     detailHref: '/blog/jilianyun-review-2026/',
-    goHref: '/go/jilianyun/',
+    goHref: 'https://haozevpn02.jlyvipaff.com/#/?code=6aTAi9bW',
   },
   {
     rank: 3,

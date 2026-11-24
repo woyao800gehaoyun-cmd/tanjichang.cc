@@ -30,6 +30,7 @@ export const navZones: NavZone[] = [
     items: [
       { label: '外网跨境指南', href: '/blog/cross-border-accelerator-2026/' },
       { label: '2026外网加速器推荐', href: '/category/reviews/' },
+      { label: 'AI 工具导航 2026', href: '/ai-tools/', badge: 'NEW' },
     ],
   },
   {
@@ -71,6 +72,7 @@ export const footerNav = {
     { label: '全部实测文章', href: '/blog/' },
     { label: '内容专题聚合', href: '/topics/' },
     { label: '机场横向对比表', href: '/compare/' },
+    { label: 'AI 工具导航', href: '/ai-tools/' },
     { label: 'FAQ 问答百科', href: '/faq/' },
   ],
 };

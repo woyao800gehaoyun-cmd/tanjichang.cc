@@ -2,7 +2,7 @@ export const heroData = {
   badge: '2026 机场推荐排行榜实时更新 · tanjichang.cc',
   title: '机场推荐 2026：稳定、便宜、专线机场排行榜实测',
   subtitle:
-    '拒绝云评测，直接给出 2026 机场天梯榜：按晚高峰延迟、IPLC/IEPL 专线稳定度、Clash/小火箭适配与性价比，实测光年梯（光年梯VPN / 光年梯机场 / 光年梯IP）、极连云、快狸、速界、可信云、边缘节点 6 家梯队。',
+    '拒绝云评测，直接给出 2026 机场天梯榜：按晚高峰延迟、IPLC/IEPL 专线稳定度、Clash/小火箭适配与性价比，持续实测光年梯（光年梯VPN / 光年梯机场 / 光年梯IP）、极连云、快狸、速界、可信云、边缘节点等热门梯队，并定期收录更多优质稳定机场。',
   primaryCta: { label: '查看 2026 机场排行榜', href: '#rankings' },
   secondaryCta: { label: '光年梯 TOP 1 档案', href: '/brands/guangnianti/' },
   highlightCard: {
@@ -18,7 +18,7 @@ export const heroData = {
 };
 
 export const statsData = [
-  { value: 'TOP 6', label: '2026 机场天梯榜', note: '光年梯领衔完整梯队' },
+  { value: '持续更新', label: '2026 机场天梯榜', note: '光年梯领衔，定期新增实测' },
   { value: '28ms', label: '专线机场晚高峰延迟', note: '光年梯实测均值' },
   { value: '全端', label: 'Clash / 小火箭 / v2rayN', note: '订阅一键导入即用' },
   { value: '5 维', label: 'SEO 精准选型指南', note: '稳定 / 便宜 / 专线 / AI / 流媒体' },
@@ -57,8 +57,8 @@ export const quickTopicLinks = [
   },
   {
     badge: '横向硬核对照',
-    title: '6 家机场核心参数对比表',
-    desc: '光年梯、极连云、快狸、速界、可信云、边缘节点一表看清。',
+    title: '热门机场核心参数对比表',
+    desc: '光年梯、极连云、快狸等主力梯队一表看清，随新测机场同步更新。',
     href: '/compare/',
   },
 ];

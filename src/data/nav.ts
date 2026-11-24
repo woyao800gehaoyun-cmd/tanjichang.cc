@@ -70,7 +70,7 @@ export const footerNav = {
     { label: '光年梯档案', href: '/brands/guangnianti/' },
     { label: '全部实测文章', href: '/blog/' },
     { label: '内容专题聚合', href: '/topics/' },
-    { label: '6家机场对比表', href: '/compare/' },
+    { label: '机场横向对比表', href: '/compare/' },
     { label: 'FAQ 问答百科', href: '/faq/' },
   ],
 };

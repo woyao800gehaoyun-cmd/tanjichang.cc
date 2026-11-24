@@ -23,9 +23,10 @@ export const redirects: Record<string, RedirectEntry> = {
   },
   jilianyun: {
     id: 'jilianyun',
-    name: '极连云',
-    url: 'https://tanjichang.cc/brands/',
-    description: '极连云入口占位：可在 src/data/redirects.ts 中替换为真实地址。',
+    name: '极连云（15元/月 · 120G流量）',
+    url: 'https://haozevpn02.jlyvipaff.com/#/?code=6aTAi9bW',
+    description: '即将前往极连云官方注册入口，结账时可使用专属优惠码 JLY888。',
+    note: '提示：优惠码 JLY888，多地区覆盖、多设备并发稳定。',
   },
   kuaili: {
     id: 'kuaili',

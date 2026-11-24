@@ -113,7 +113,7 @@ export const airportProviders: AirportProvider[] = [
       '运营风格比较低调，不搞花哨宣传但在线率一直在线。适合当作第二条备用线路，或者对流量消耗不大、看重长期省心的用户。',
     highlights: ['长期稳定在线', '不限速策略友好', '适合备用'],
     detailHref: '/blog/kexinyun-review-2026/',
-    goHref: '/go/kexinyun/',
+    goHref: 'https://everett7623.kosingaff.com//#/?code=4PQnpXx6',
   },
   {
     rank: 6,

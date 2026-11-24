@@ -43,8 +43,8 @@ export const redirects: Record<string, RedirectEntry> = {
   kexinyun: {
     id: 'kexinyun',
     name: '可信云',
-    url: 'https://tanjichang.cc/brands/',
-    description: '可信云入口占位：可在 src/data/redirects.ts 中替换为真实地址。',
+    url: 'https://everett7623.kosingaff.com//#/?code=4PQnpXx6',
+    description: '即将前往可信云官方入口，优惠码 kxy80。',
   },
   bianyuanjiedian: {
     id: 'bianyuanjiedian',

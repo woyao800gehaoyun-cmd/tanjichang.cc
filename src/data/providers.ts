@@ -94,7 +94,7 @@ export const airportProviders: AirportProvider[] = [
       '偏重跨境电商、社媒运营和远程会议场景，丢包率控制得不错，开视频会议或者拉取海外代码仓库时很少卡顿。',
     highlights: ['低抖动不丢包', '跨境办公适配', '欧美线路稳'],
     detailHref: '/blog/sujie-review-2026/',
-    goHref: '/go/sujie/',
+    goHref: 'https://pygllc.speedworldaff.cc/#/?code=7s0EsI7w',
   },
   {
     rank: 5,

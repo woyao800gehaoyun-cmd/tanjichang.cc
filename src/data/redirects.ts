@@ -37,8 +37,8 @@ export const redirects: Record<string, RedirectEntry> = {
   sujie: {
     id: 'sujie',
     name: '速界',
-    url: 'https://tanjichang.cc/brands/',
-    description: '速界入口占位：可在 src/data/redirects.ts 中替换为真实地址。',
+    url: 'https://pygllc.speedworldaff.cc/#/?code=7s0EsI7w',
+    description: '即将前往速界官方入口，优惠码 sujie888。',
   },
   kexinyun: {
     id: 'kexinyun',

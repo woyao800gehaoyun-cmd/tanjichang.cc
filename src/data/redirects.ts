@@ -49,7 +49,7 @@ export const redirects: Record<string, RedirectEntry> = {
   bianyuanjiedian: {
     id: 'bianyuanjiedian',
     name: '边缘节点',
-    url: 'https://tanjichang.cc/brands/',
-    description: '边缘节点入口占位：可在 src/data/redirects.ts 中替换为真实地址。',
+    url: 'https://wep.edgenovaaff.com/#/?code=4wmwcLDL',
+    description: '即将前往边缘节点官方入口，优惠码 xk808。',
   },
 };

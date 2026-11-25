@@ -132,6 +132,6 @@ export const airportProviders: AirportProvider[] = [
       '特色是冷门地区节点多，比如欧洲小国、南美或特定住宅/边缘落地，适合有特定地区 IP 需求或喜欢折腾分流规则的玩家。',
     highlights: ['冷门地区丰富', 'Reality 协议支持', '适合分流玩家'],
     detailHref: '/blog/bianyuanjiedian-review-2026/',
-    goHref: '/go/bianyuanjiedian/',
+    goHref: 'https://wep.edgenovaaff.com/#/?code=4wmwcLDL',
   },
 ];

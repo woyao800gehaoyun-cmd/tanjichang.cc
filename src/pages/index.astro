@@ -1,8 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import StatsStrip from '../components/StatsStrip.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import ArticleCard from '../components/ArticleCard.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import ProviderIcon from '../components/ProviderIcon.astro';
 import FAQ from '../components/FAQ.astro';
@@ -10,6 +12,12 @@ import CTASection from '../components/CTASection.astro';
 import { statsData, comparisonData, homeFaqs, quickTopicLinks } from '../data/homepage';
 import { airportProviders } from '../data/providers';
 import { navZones } from '../data/nav';
+import { getCategoryBySlug } from '../data/categories';
+
+const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
+const fmtDate = (d: Date) => d.toISOString().slice(0, 10);
 
 const homeJsonLd = [
   {
@@ -216,6 +224,35 @@ const homeJsonLd = [
             <span class="mt-4 text-xs font-bold text-indigo-600">立即阅读 &rarr;</span>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5 最新实测与教程文章（自动同步定时更新） -->
+  <section class="py-14 sm:py-16 bg-white/70 border-y border-indigo-100/80">
+    <div class="container-site">
+      <SectionTitle
+        eyebrow="Latest Updates · 自动同步"
+        title="最新实测与教程文章"
+        description="按发布时间自动更新，第一时间展示最新的客户端教程、AI 解锁实测与避坑指南。"
+        actionText="查看全部文章"
+        actionHref="/blog/"
+      />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {latestPosts.map((post) => {
+          const cat = getCategoryBySlug(post.data.category);
+          return (
+            <ArticleCard
+              title={post.data.title}
+              description={post.data.description}
+              href={`/blog/${post.slug}/`}
+              category={cat ? cat.name : post.data.category}
+              tags={post.data.tags}
+              pubDate={fmtDate(post.data.pubDate)}
+              updatedDate={post.data.updatedDate ? fmtDate(post.data.updatedDate) : undefined}
+            />
+          );
+        })}
       </div>
     </div>
   </section>
